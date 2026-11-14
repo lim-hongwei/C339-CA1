@@ -65,8 +65,12 @@ def test_negative_measurement_raises_value_error(weight_grams, length_cm):
     [
         (1000.0, 100),  # float weight
         ("1000", 100),  # string weight
+        (None, 100),  # missing weight
+        (True, 100),  # boolean weight is not a valid integer
+        (1000, 100.0),  # float length
+        (1000, "100"),  # string length
         (1000, None),  # missing length
-        (True, 100),  # boolean is not a valid integer
+        (1000, False),  # boolean length is not a valid integer
     ],
 )
 def test_invalid_measurement_type_raises_type_error(weight_grams, length_cm):
